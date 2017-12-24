@@ -1,3 +1,9 @@
+#-----------------------------------------------------------------------#
+#This file contains operations related to the Max Binary Heap		#
+#	Author: Utkarsh Dwivedi				   		#
+#	Email: utkarshdwivedi394@gmail.com		   		#
+#	Version: 2.1					   		#
+#-----------------------------------------------------------------------#
 import binaryHeapUtility as bHeap
 
 class MaxHeap:
