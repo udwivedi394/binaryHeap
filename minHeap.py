@@ -12,12 +12,16 @@ class MinHeap:
 		return
 
 	def delete(self,k):
+		if len(self.arr)==0:
+			print "Heap empty!"
+			return False
 		last = len(self.arr)-1
 		swap(self.arr,k,last)
-		self.arr.pop()
-		self.minHeapify(k)
+		delVal = self.arr.pop()
+		self.minHeapify()
+		return delVal
 
-	def minHeapify(self,k):
+	def minHeapify(self,k=0):
 		leftNode = leftChild(self.arr,k)
 		rightNode = rightChild(self.arr,k)
 	
@@ -27,7 +31,7 @@ class MinHeap:
 		if rightNode and self.arr[rightNode] < self.arr[minNode]:
 			minNode = rightNode
 
-		while minNode != k:
+		if minNode != k:
 			swap(self.arr,minNode,k)
 			self.minHeapify(minNode)
 		return
@@ -37,6 +41,13 @@ class MinHeap:
 		return "True"
 
 def swap(arr,x,y):
+	temp = arr[x]
+	arr[x] = arr[y]
+	arr[y] = temp
+	return
+
+#The XOR method works only when there are two separate memory location of x & y
+def swap02(arr,x,y):
 	arr[x] ^= arr[y]
 	arr[y] ^= arr[x]
 	arr[x] ^= arr[y]
@@ -64,11 +75,8 @@ def rightChild(arr,i,value=0):
 	return None
 
 heap = MinHeap()
-heap.insert(40)
-heap.insert(30)
-heap.insert(20)
-heap.insert(10)
+for i in range(100,0,-10):
+	heap.insert(i)
 
-print heap
-heap.delete(0)
-print heap
+for i in range(110,0,-10):
+	print heap.delete(0)
